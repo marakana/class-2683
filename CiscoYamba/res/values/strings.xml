@@ -4,5 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_status">Update your status</string>
+    <string name="update">Update!</string>
+    <string name="status_hint">What\'s happening?!?</string>
 
 </resources>

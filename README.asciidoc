@@ -1,7 +1,25 @@
-= Notes = 
+Notes
+=====
 
 
-== Homework
+UI Labs
+------
+
+Status Activity Layout::
+Add EditText to Status Activity layout, setup its height, width, id, and hint.
+Position it below the button, and have it take entire remaining screen space.
+
+Status Activity Landscape Layout::
+Create a landscape version of status layout.
+Hint: 
+. Use File->New->Android XML File... tool.
+. Create it in /res/layout-land/activity_status.xml.
+. Qualify it for _Orientation_ qualifier
+. Start by copying the content of default status layout.
+
+
+Homework
+-------
 
 Watch:
 
