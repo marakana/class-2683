@@ -1,21 +1,17 @@
 Notes
 =====
 
-UI Demo
-------
 
+DEMO: Status Activity Layout::
 Create StatusActivity layout file, using Relative Layout, a button and an edit text.
 
 
-UI Labs
-------
-
-Status Activity Layout::
+LAB: Status Activity Layout::
 Add EditText to Status Activity layout, setup its height, width, id, and hint.
 Position it below the button, and have it take entire remaining screen space.
 
 
-Status Activity Landscape Layout::
+LAB: Status Activity Landscape Layout::
 Create a landscape version of status layout.
 Hint: 
 . Use File->New->Android XML File tool.
@@ -24,10 +20,23 @@ Hint:
 . Start by copying the content of default status layout.
 
 
-Handling UI Events::
+DEMO: Implement onClickListener for the update button::
+Add the Java binding to handle the update button.
+
+
+LAB: Handling UI Events::
 . Add a TextView with id text_count to Status Activity. (hint: don't forget to update landscape layout as well!).
 . Add a TextWatcher listener to editStatus and update textCount when as user types.
 . Tell user how many characters are left, assuming we have 140 total.
+
+
+DEMO: Adding the YambaClient jar to the project.
+
+DEMO: Async Task
+
+DEMO: Adding Internet permissions
+
+LAB: Adding a Dialog while posting
 
 
 Homework
