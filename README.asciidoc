@@ -46,4 +46,6 @@ Watch:
 Resources
 ---------
 
+https://github.com/marakana/class-2683/raw/master/CiscoYamba/libs/yambaclientlib.jar[YambaClientLib.jar]
+
 http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/[Intel HAXM]
