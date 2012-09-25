@@ -21,6 +21,10 @@ Hint:
 Homework
 -------
 
+Review FastTrack to Java chapters on:
+* Object Oriented Programing
+* Packaging
+
 Watch:
 
 * http://mrkn.co/f/595[Eclipse Video]
