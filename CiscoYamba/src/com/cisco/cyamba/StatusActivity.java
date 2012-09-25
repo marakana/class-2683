@@ -1,6 +1,7 @@
 package com.cisco.cyamba;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -57,13 +58,23 @@ public class StatusActivity extends Activity implements
 	public void onClick(View v) {
 		String status = editStatus.getText().toString();
 
-		statusUpdateTask = new StatusUpdateTask();
-		statusUpdateTask.execute(status);
+		if (status != null && !status.isEmpty()) {
+			statusUpdateTask = new StatusUpdateTask();
+			statusUpdateTask.execute(status);
+		}
 
 		Log.d("Yamba", "onClicked with status: " + status);
 	}
 
 	class StatusUpdateTask extends AsyncTask<String, Void, String> {
+		ProgressDialog dialog;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			dialog = ProgressDialog.show(StatusActivity.this, "Posting...",
+					"please wait...");
+		}
 
 		@Override
 		protected String doInBackground(String... params) {
@@ -79,6 +90,7 @@ public class StatusActivity extends Activity implements
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
+			dialog.cancel();
 			Toast.makeText(StatusActivity.this, result, Toast.LENGTH_LONG)
 					.show();
 		}

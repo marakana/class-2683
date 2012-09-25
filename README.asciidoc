@@ -1,6 +1,12 @@
 Notes
 =====
 
+LECTURE: Android History
+LECTURE: Stack Overview
+LECTURE: Hello, World
+
+LECTURE: Architecting Android Apps, up to UI
+LECTURE: Android UI: User Interface
 
 DEMO: Status Activity Layout::
 Create StatusActivity layout file, using Relative Layout, a button and an edit text.
@@ -20,6 +26,8 @@ Hint:
 . Start by copying the content of default status layout.
 
 
+LECTURE: Android UI: UI Events
+
 DEMO: Implement onClickListener for the update button::
 Add the Java binding to handle the update button.
 
@@ -36,8 +44,9 @@ DEMO: Async Task
 
 DEMO: Adding Internet permissions
 
-LAB: Adding a Dialog while posting
-
+LAB: Add a Dialog while posting::
+Hint: Use http://developer.android.com/reference/android/app/ProgressDialog.html[ProgressDialog]
+Use AsyncTask's callbacks to start/stop the progress dialog.
 
 Homework
 -------
