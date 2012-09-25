@@ -1,6 +1,11 @@
 Notes
 =====
 
+UI Demo
+------
+
+Create StatusActivity layout file, using Relative Layout, a button and an edit text.
+
 
 UI Labs
 ------
@@ -9,13 +14,20 @@ Status Activity Layout::
 Add EditText to Status Activity layout, setup its height, width, id, and hint.
 Position it below the button, and have it take entire remaining screen space.
 
+
 Status Activity Landscape Layout::
 Create a landscape version of status layout.
 Hint: 
-. Use File->New->Android XML File... tool.
-. Create it in /res/layout-land/activity_status.xml.
+. Use File->New->Android XML File tool.
+. Create new layout in /res/layout-land/activity_status.xml.
 . Qualify it for _Orientation_ qualifier
 . Start by copying the content of default status layout.
+
+
+Handling UI Events::
+. Add a TextView with id text_count to Status Activity. (hint: don't forget to update landscape layout as well!).
+. Add a TextWatcher listener to editStatus and update textCount when as user types.
+. Tell user how many characters are left, assuming we have 140 total.
 
 
 Homework

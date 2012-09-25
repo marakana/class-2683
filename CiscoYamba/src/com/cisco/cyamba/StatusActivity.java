@@ -2,11 +2,14 @@ package com.cisco.cyamba;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class StatusActivity extends Activity {
+public class StatusActivity extends Activity implements OnClickListener {
 	Button buttonUpdate;
 	EditText editStatus;
 	
@@ -15,8 +18,10 @@ public class StatusActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
         
-        buttonUpdate = (Button) findViewById(R.id.button_update);
         editStatus = (EditText) findViewById(R.id.edit_status);
+        buttonUpdate = (Button) findViewById(R.id.button_update);
+        
+        buttonUpdate.setOnClickListener( this );
     }
 
     @Override
@@ -24,4 +29,9 @@ public class StatusActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_status, menu);
         return true;
     }
+
+	public void onClick(View v) {
+		String status = editStatus.getText().toString();
+		Log.d("Yamba", "onClicked with status: "+status);
+	}
 }
