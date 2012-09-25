@@ -8,15 +8,15 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class StatusActivity extends Activity implements OnClickListener,
+public class StatusActivity extends Activity implements 
+		//OnClickListener,
 		TextWatcher {
 	private static final int MAX_LENGTH = 140;
-	private Button buttonUpdate;
+//	private Button buttonUpdate;
 	private EditText editStatus;
 	private TextView textCount;
 
@@ -26,11 +26,11 @@ public class StatusActivity extends Activity implements OnClickListener,
 		setContentView(R.layout.activity_status);
 
 		editStatus = (EditText) findViewById(R.id.edit_status);
-		buttonUpdate = (Button) findViewById(R.id.button_update);
+//		buttonUpdate = (Button) findViewById(R.id.button_update);
 		textCount = (TextView) findViewById(R.id.text_count);
 
 		textCount.setText(Integer.valueOf(MAX_LENGTH).toString());
-		buttonUpdate.setOnClickListener(this);
+//		buttonUpdate.setOnClickListener(this);
 		editStatus.addTextChangedListener(this);
 	}
 
@@ -41,8 +41,12 @@ public class StatusActivity extends Activity implements OnClickListener,
 	}
 
 	/** OnClickListener callback */
-	public void onClick(View v) {
+	public void onUpdateButtonClick(View v) {
 		String status = editStatus.getText().toString();
+		
+		// TODO Do some work here...
+		
+		Toast.makeText(this, "Successfully updated", Toast.LENGTH_LONG).show();
 		Log.d("Yamba", "onClicked with status: " + status);
 	}
 
