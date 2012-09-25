@@ -41,3 +41,9 @@ Review FastTrack to Java chapters on:
 Watch:
 
 * http://mrkn.co/f/595[Eclipse Video]
+
+
+Resources
+---------
+
+http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/[Intel HAXM]
