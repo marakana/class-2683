@@ -91,8 +91,23 @@ Switch from using `PreferenceActivity` to `PreferenceFragment`. Use dynamic load
 LAB: Add server and refresh interval to preferences::
 Server is another text input (i.e. `EditTextPreference`), but refresh interval could be a `ListPreference` with human-readable values such as: Five minutes, Every hour, Once a day. The values would be in seconds. Hint: specify entities and entity values as string arrays values (new type of values resource).
 
-DEMO: Using PreferenceManager::
-Use PreferenceManager to read the data.
+DEMO: Using Preference Manager::
+Use Preference Manager to read the data in status fragment to get username and password data.
+
+LAB: Create Main activity::
+Create activity that will be the main entry point into the app.
+
+LECTURE: ActionBar::
+How Action Bar providers for app navigation.
+
+DEMO: Adding menu for Prefs and Status Update::
+Add menu to jump to prefs activity and status activity.
+
+LECTURE: Intents::
+How intents work.
+
+DEMO: Adding action bar actions::
+Use intents to launch activities.
 
 LAB: Use static fragments::
 Create a main activity that would host both preference fragment as well as status fragment.

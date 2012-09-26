@@ -2,9 +2,11 @@ package com.cisco.cyamba;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,7 +32,8 @@ public class StatusFragment extends Fragment implements OnClickListener,
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_status, container, false);
+		View view = inflater
+				.inflate(R.layout.fragment_status, container, false);
 
 		editStatus = (EditText) view.findViewById(R.id.edit_status);
 		buttonUpdate = (Button) view.findViewById(R.id.button_update);
@@ -39,7 +42,7 @@ public class StatusFragment extends Fragment implements OnClickListener,
 		textCount.setText(Integer.valueOf(MAX_LENGTH).toString());
 		buttonUpdate.setOnClickListener(this);
 		editStatus.addTextChangedListener(this);
-		
+
 		return view;
 	}
 
@@ -51,7 +54,6 @@ public class StatusFragment extends Fragment implements OnClickListener,
 			statusUpdateTask = null;
 		}
 	}
-
 
 	/** OnClickListener callback */
 	public void onClick(View v) {
@@ -71,13 +73,17 @@ public class StatusFragment extends Fragment implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog = ProgressDialog.show( getActivity(), "Posting...",
+			dialog = ProgressDialog.show(getActivity(), "Posting...",
 					"please wait...");
 		}
 
 		@Override
 		protected String doInBackground(String... params) {
-			YambaClient yambaClient = new YambaClient("student", "password");
+			SharedPreferences prefs = PreferenceManager
+					.getDefaultSharedPreferences(getActivity());
+			String username = prefs.getString("username", "");
+			String password = prefs.getString("password", "");
+			YambaClient yambaClient = new YambaClient(username, password);
 			try {
 				yambaClient.updateStatus(params[0]);
 				return "Successfully updated";
@@ -90,8 +96,7 @@ public class StatusFragment extends Fragment implements OnClickListener,
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			dialog.cancel();
-			Toast.makeText(getActivity(), result, Toast.LENGTH_LONG)
-					.show();
+			Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
 		}
 	}
 
