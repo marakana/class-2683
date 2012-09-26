@@ -16,9 +16,12 @@
         <activity
             android:name=".StatusActivity"
             android:label="@string/title_activity_status" >
+        </activity>
+        <activity
+            android:name=".PrefsActivity"
+            android:label="@string/title_preferences" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -6,5 +6,10 @@
     <string name="title_activity_status">Update your status</string>
     <string name="update">Update!</string>
     <string name="status_hint">What\'s happening?!?</string>
+    <string name="username">Username</string>
+    <string name="username_summary">Who do you login as?</string>
+    <string name="password">Password</string>
+    <string name="password_summary">What is your password?</string>
+    <string name="title_preferences">Preferences</string>
 
 </resources>
