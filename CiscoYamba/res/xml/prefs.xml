@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <EditTextPreference
-        android:key="username"
-        android:summary="@string/username_summary"
-        android:title="@string/username" />
-    <EditTextPreference
-        android:key="password"
-        android:password="true"
-        android:summary="@string/password_summary"
-        android:title="@string/password" />
+    <PreferenceCategory android:title="@string/login" >
+        <EditTextPreference
+            android:key="username"
+            android:summary="@string/username_summary"
+            android:title="@string/username" />
+        <EditTextPreference
+            android:key="password"
+            android:password="true"
+            android:summary="@string/password_summary"
+            android:title="@string/password" />
+        <EditTextPreference android:summary="@string/server_summary" android:key="server" android:title="@string/server"/>
+    </PreferenceCategory>
+    <ListPreference android:key="refresh_interval" android:title="@string/refresh_interval" android:summary="@string/refresh_interval_summary" android:entries="@array/refresh_interval_names" android:entryValues="@array/refresh_interval_values"/>
 
 </PreferenceScreen>

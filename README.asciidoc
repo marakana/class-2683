@@ -85,8 +85,14 @@ Overview of preferences in Android.
 DEMO: How to create a simple preference::
 Create preference screen for username and password.
 
+DEMO: Use Preference Fragment::
+Switch from using `PreferenceActivity` to `PreferenceFragment`. Use dynamic loading.
+
 LAB: Add server and refresh interval to preferences::
-Server is another text input, but refresh interval could be a `Spinner` with human-readable values such as: Five minutes, Every hour, Once a day. The values would be in seconds though.
+Server is another text input (i.e. `EditTextPreference`), but refresh interval could be a `ListPreference` with human-readable values such as: Five minutes, Every hour, Once a day. The values would be in seconds. Hint: specify entities and entity values as string arrays values (new type of values resource).
+
+DEMO: Using PreferenceManager::
+Use PreferenceManager to read the data.
 
 LAB: Use static fragments::
 Create a main activity that would host both preference fragment as well as status fragment.
