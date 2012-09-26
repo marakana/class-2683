@@ -16,5 +16,7 @@
     <string name="server_summary">Where is the service hosted?</string>
     <string name="refresh_interval">Refresh Interval</string>
     <string name="refresh_interval_summary">How frequently would you like to refresh data?</string>
+    <string name="status">Status</string>
+    <string name="prefs">Prefs</string>
 
 </resources>

@@ -94,6 +94,9 @@ Server is another text input (i.e. `EditTextPreference`), but refresh interval c
 DEMO: Using Preference Manager::
 Use Preference Manager to read the data in status fragment to get username and password data.
 
+LECTURE: File System Overview::
+Overview of main partitions of the file system on the device.
+
 LAB: Create Main activity::
 Create activity that will be the main entry point into the app.
 
@@ -102,6 +105,9 @@ How Action Bar providers for app navigation.
 
 DEMO: Adding menu for Prefs and Status Update::
 Add menu to jump to prefs activity and status activity.
+
+LAB: Add Action Bar Item::
+Add a menu item for preferences. Hint: use icon `ic_menu_preferences`.
 
 LECTURE: Intents::
 How intents work.
