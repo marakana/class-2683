@@ -3,6 +3,7 @@ package com.cisco.cyamba;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -40,6 +41,9 @@ public class MainActivity extends Activity {
 			return true;
 		case R.id.item_prefs:
 			swapFragment(prefsFragment);
+			return true;
+		case R.id.item_refresh:
+			startService( new Intent(this, RefreshService.class) );
 			return true;
 		default:
 			return false;
