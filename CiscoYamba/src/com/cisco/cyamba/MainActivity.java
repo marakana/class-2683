@@ -46,20 +46,23 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	private void swapFragment(Fragment fragment) {		
-		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-		
+	private void swapFragment(Fragment fragment) {
+		FragmentTransaction transaction = getFragmentManager()
+				.beginTransaction();
+
 		// If fragment is already registered with FragmentManager, show it
-		if(fragment.isAdded()) {
+		if (fragment.isAdded()) {
 			transaction.show(fragment);
-			Log.d("MainActivity", "showing: "+fragment.getTag());	
-		} 
-		// Else add it to the view	
-		else {
-			transaction.replace( R.id.main_content, fragment, fragment.getClass().getSimpleName());
-			Log.d("MainActivity", "replacing: "+fragment.getClass().getSimpleName());
+			Log.d("MainActivity", "showing: " + fragment.getTag());
 		}
-		
+		// Else add it to the view
+		else {
+			transaction.replace(R.id.main_content, fragment, fragment
+					.getClass().getSimpleName());
+			Log.d("MainActivity", "replacing: "
+					+ fragment.getClass().getSimpleName());
+		}
+
 		// Add this transaction to the back stack
 		transaction.addToBackStack(null);
 

@@ -125,7 +125,14 @@ Topics on how to communicate from fragment to activity, how to use back stack, a
 Day 4
 ----
 
-LECTURE: Services
+LECTURE: Services::
+Service overview, lifecycle.
+
+DEMO: Implement `RefreshService`::
+Add basic callbacks.
+
+LAB: Add _Refresh_ button to Acton Bar::
+Have this button start the Refresh service. Hint: use `startService()`.
 
 
 LECTURE: Intent Service
