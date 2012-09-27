@@ -1,21 +1,23 @@
 package com.cisco.cyamba;
 
-import android.app.Service;
+import java.util.List;
+
+import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.marakana.android.yamba.clientlib.YambaClient;
+import com.marakana.android.yamba.clientlib.YambaClient.Status;
+import com.marakana.android.yamba.clientlib.YambaClientException;
 
-public class RefreshService extends Service {
+public class RefreshService extends IntentService {
 	private static final String TAG = "RefreshService";
-	private YambaClient yambaClient;
+	private YambaClient yambaClient = null;
 
-	@Override
-	public IBinder onBind(Intent intent) {
-		return null;
+	public RefreshService() {
+		super(TAG);
 	}
 
 	@Override
@@ -27,15 +29,27 @@ public class RefreshService extends Service {
 				.getDefaultSharedPreferences(this);
 		String username = prefs.getString("username", "");
 		String password = prefs.getString("password", "");
+		Log.d(TAG, String.format("YambaClient with: %s/%s", username, password));
 		yambaClient = new YambaClient(username, password);
 
 		Log.d(TAG, "onCreated");
 	}
 
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.d(TAG, "onStarted");
-		return super.onStartCommand(intent, flags, startId);
+	public void onHandleIntent(Intent intent) {
+		Log.d(TAG, "onHandleIntent");
+
+		try {
+			List<Status> timeline = yambaClient.getTimeline(20);
+			for (Status status : timeline) {
+				Log.d(TAG,
+						String.format("%s: %s", status.getUser(),
+								status.getMessage()));
+			}
+		} catch (YambaClientException e) {
+			Log.e(TAG, "Failed to fetch timeline", e);
+			e.printStackTrace();
+		}
 	}
 
 	@Override

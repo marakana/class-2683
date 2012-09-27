@@ -137,7 +137,11 @@ Have this button start the Refresh service. Hint: use `startService()`.
 LAB: Read Shared Prefs::
 Use the default shared preferences to get username and password.
 
-LECTURE: Intent Service
+DEMO: Add YambaClient::
+Use shared prefs.
+
+LECTURE: Intent Service::
+Overview of what it is. Change Refresh service to become an intent service.
 
 
 LECTURE: Content Providers
@@ -172,6 +176,8 @@ Parking Lot
 
 Resources
 ---------
+
+https://github.com/marakana/YambaClientLib[YambaClientLib].
 
 https://github.com/marakana/class-2683/raw/master/CiscoYamba/libs/yambaclientlib.jar[YambaClientLib.jar]
 

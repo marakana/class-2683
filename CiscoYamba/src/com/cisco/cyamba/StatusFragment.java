@@ -85,7 +85,7 @@ public class StatusFragment extends Fragment implements OnClickListener,
 			String password = prefs.getString("password", "");
 			YambaClient yambaClient = new YambaClient(username, password);
 			try {
-				yambaClient.updateStatus(params[0]);
+				yambaClient.postStatus(params[0]);
 				return "Successfully updated";
 			} catch (Exception e) {
 				return "Failed to update";
