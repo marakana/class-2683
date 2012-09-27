@@ -60,13 +60,14 @@ public class StatusProvider extends ContentProvider {
 
 		// Insert data to DB
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		long id = db.insert(DbHelper.TABLE, null, values);
-		
-		if(id>0) {
+		long id = db.insertWithOnConflict(DbHelper.TABLE, null, values,
+				SQLiteDatabase.CONFLICT_IGNORE);
+
+		if (id > 0) {
 			result = ContentUris.withAppendedId(uri, id);
 			getContext().getContentResolver().notifyChange(result, null);
 		}
-		
+
 		return result;
 	}
 
