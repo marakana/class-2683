@@ -143,8 +143,14 @@ Use shared prefs.
 LECTURE: Intent Service::
 Overview of what it is. Change Refresh service to become an intent service.
 
+// lunch
 
-LECTURE: Content Providers
+LECTURE: Content Providers::
+Using content providers and creating content providers
+
+DEMO: Create StatusContract::
+
+DEMO:
 
 
 LECTURE: SQL Databases
