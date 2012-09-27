@@ -10,8 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends Activity {
-	StatusFragment statusFragment;
-	PrefsFragment prefsFragment;
+	public static final String REFRESH_ACTION = "com.cisco.yamba.REFRESH";
+	private StatusFragment statusFragment;
+	private PrefsFragment prefsFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class MainActivity extends Activity {
 			swapFragment(prefsFragment);
 			return true;
 		case R.id.item_refresh:
-			startService( new Intent(this, RefreshService.class) );
+			startService( new Intent( REFRESH_ACTION ) );
 			return true;
 		default:
 			return false;
