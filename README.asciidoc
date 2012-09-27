@@ -134,6 +134,8 @@ Add basic callbacks.
 LAB: Add _Refresh_ button to Acton Bar::
 Have this button start the Refresh service. Hint: use `startService()`.
 
+LAB: Read Shared Prefs::
+Use the default shared preferences to get username and password.
 
 LECTURE: Intent Service
 
