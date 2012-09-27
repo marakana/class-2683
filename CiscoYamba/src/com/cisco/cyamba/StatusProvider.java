@@ -1,15 +1,20 @@
 package com.cisco.cyamba;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 public class StatusProvider extends ContentProvider {
 
 	private static final int STATUS_DIR = 1;
 	private static final int STATUS_ITEM = 2;
+
+	private DbHelper dbHelper;
+
 	private static final UriMatcher uriMatcher;
 	static {
 		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -21,7 +26,7 @@ public class StatusProvider extends ContentProvider {
 
 	@Override
 	public String getType(Uri uri) {
-		switch(uriMatcher.match(uri)) {
+		switch (uriMatcher.match(uri)) {
 		case STATUS_DIR:
 			return StatusContract.CONTENT_TYPE;
 		case STATUS_ITEM:
@@ -33,8 +38,8 @@ public class StatusProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
-		// TODO Auto-generated method stub
-		return false;
+		dbHelper = new DbHelper(getContext());
+		return (dbHelper == null) ? false : true;
 	}
 
 	@Override
@@ -46,8 +51,23 @@ public class StatusProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-		// TODO Auto-generated method stub
-		return null;
+		Uri result = null;
+
+		// Assert correct uri
+		if (uriMatcher.match(uri) != STATUS_DIR) {
+			throw new IllegalArgumentException("Unsupported Uri: " + uri);
+		}
+
+		// Insert data to DB
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		long id = db.insert(DbHelper.TABLE, null, values);
+		
+		if(id>0) {
+			result = ContentUris.withAppendedId(uri, id);
+			getContext().getContentResolver().notifyChange(result, null);
+		}
+		
+		return result;
 	}
 
 	@Override

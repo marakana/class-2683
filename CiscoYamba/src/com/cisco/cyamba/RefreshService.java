@@ -3,6 +3,7 @@ package com.cisco.cyamba;
 import java.util.List;
 
 import android.app.IntentService;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -39,9 +40,19 @@ public class RefreshService extends IntentService {
 	public void onHandleIntent(Intent intent) {
 		Log.d(TAG, "onHandleIntent");
 
+		ContentValues values = new ContentValues();
 		try {
 			List<Status> timeline = yambaClient.getTimeline(20);
 			for (Status status : timeline) {
+
+				// Insert into status provider
+				values.put(StatusContract.Columns._ID, status.getId());
+				values.put(StatusContract.Columns.CREATED_AT, status
+						.getCreatedAt().getTime());
+				values.put(StatusContract.Columns.USER, status.getUser());
+				values.put(StatusContract.Columns.MESSAGE, status.getMessage());
+				getContentResolver().insert(StatusContract.CONTENT_URI, values);
+
 				Log.d(TAG,
 						String.format("%s: %s", status.getUser(),
 								status.getMessage()));
