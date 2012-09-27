@@ -29,11 +29,19 @@
             android:label="@string/title_preferences" >
         </activity>
 
-        <service android:name=".RefreshService" android:exported="false">
+        <service
+            android:name=".RefreshService"
+            android:exported="false" >
             <intent-filter>
-                <action android:name="com.cisco.yamba.REFRESH"/>
+                <action android:name="com.cisco.yamba.REFRESH" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name=".StatusProvider"
+            android:authorities="com.cisco.yamba.provider"
+            android:exported="false" >
+        </provider>
     </application>
 
 </manifest>
