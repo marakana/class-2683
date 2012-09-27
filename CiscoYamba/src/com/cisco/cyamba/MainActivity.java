@@ -1,8 +1,10 @@
 package com.cisco.cyamba;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,10 +15,10 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main);
 		statusFragment = new StatusFragment();
 		prefsFragment = new PrefsFragment();
-		
+
 		getActionBar().setHomeButtonEnabled(true);
 	}
 
@@ -34,17 +36,33 @@ public class MainActivity extends Activity {
 					.remove(statusFragment).commit();
 			return true;
 		case R.id.item_status:
-			getFragmentManager().beginTransaction()
-					.replace(android.R.id.content, statusFragment).commit();
-
+			swapFragment(statusFragment);
 			return true;
 		case R.id.item_prefs:
-			getFragmentManager().beginTransaction()
-					.replace(android.R.id.content, prefsFragment).commit();
+			swapFragment(prefsFragment);
 			return true;
 		default:
 			return false;
 		}
 	}
 
+	private void swapFragment(Fragment fragment) {		
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		
+		// If fragment is already registered with FragmentManager, show it
+		if(fragment.isAdded()) {
+			transaction.show(fragment);
+			Log.d("MainActivity", "showing: "+fragment.getTag());	
+		} 
+		// Else add it to the view	
+		else {
+			transaction.replace( R.id.main_content, fragment, fragment.getClass().getSimpleName());
+			Log.d("MainActivity", "replacing: "+fragment.getClass().getSimpleName());
+		}
+		
+		// Add this transaction to the back stack
+		transaction.addToBackStack(null);
+
+		transaction.commit();
+	}
 }

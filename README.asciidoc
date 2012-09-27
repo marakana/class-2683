@@ -113,16 +113,41 @@ LECTURE: Intents::
 How intents work.
 
 DEMO: Adding action bar actions::
-Use intents to launch activities.
+Use intents to launch activities. Then, switch to using fragments dynamically instead.
 
 LAB: Use static fragments::
 Create a main activity that would host both preference fragment as well as status fragment.
 
-LECTURE: Action Bar::
-What Action Bar is and how to use it.
+HOMEWORK: Read ahead on advanced fragments::
+Topics on how to communicate from fragment to activity, how to use back stack, and similar.
 
-DEMO: Create the action bar::
-Create an action bar to switch from status activity to preference activity.
+
+Day 4
+----
+
+LECTURE: Services
+
+
+LECTURE: Intent Service
+
+
+LECTURE: Content Providers
+
+
+LECTURE: SQL Databases
+
+
+Day 5
+----
+
+LECTURE: Timeline Fragment
+
+
+LECTURE: Loaders
+
+
+LECTURE: Broadcast Receiver
+
 
 
 Parking Lot
