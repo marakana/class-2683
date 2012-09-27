@@ -6,8 +6,9 @@ import android.provider.BaseColumns;
 public final class StatusContract {
 
 	public static final String AUTHORITY = "com.cisco.yamba.provider";
+	public static final String PATH = "status";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
-			+ "/status");
+			+ "/" + PATH);
 	public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.cisco.status";
 	public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.cisco.status";
 

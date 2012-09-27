@@ -149,11 +149,15 @@ LECTURE: Content Providers::
 Using content providers and creating content providers
 
 DEMO: Create StatusContract::
+Create status contract file with a bunch of constants we'll need later.
 
-DEMO:
+DEMO: Create ContentProvider::
+Setup the shell for the status provider. Register it with the manifest.
 
+DEMO: SQL Databases::
+Implement DbHelper class
 
-LECTURE: SQL Databases
+DEMO: Implementing Status Provider's insert()::
 
 
 Day 5
