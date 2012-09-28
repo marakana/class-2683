@@ -165,6 +165,12 @@ Add a button to the action bar that will call status provider's delete() method,
 Day 5
 ----
 
+DEMO: Implement query() in status provider::
+Add support for querying the data.
+
+LAB: Implement update()::
+Provide the implementation for update() in status provider, similar to insert() and delete().
+
 LECTURE: Timeline Fragment::
 Overview of lists and adapters. Intro to List fragment.
 

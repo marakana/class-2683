@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
@@ -46,8 +47,27 @@ public class StatusProvider extends ContentProvider {
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
-		// TODO Auto-generated method stub
-		return null;
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+
+		switch (uriMatcher.match(uri)) {
+		case STATUS_DIR:
+			break;
+		case STATUS_ITEM:
+			qb.appendWhere(StatusContract.Columns._ID + "="
+					+ uri.getLastPathSegment());
+			break;
+		default:
+			throw new IllegalArgumentException("Unsupported Uri: " + uri);
+		}
+
+		Cursor cursor = qb.query(db, projection, selection, selectionArgs,
+				null, null, sortOrder);
+		
+		// Register for changes to this cursor
+		cursor.setNotificationUri(getContext().getContentResolver(), uri);
+
+		return cursor;
 	}
 
 	@Override
@@ -100,8 +120,8 @@ public class StatusProvider extends ContentProvider {
 		default:
 			throw new IllegalArgumentException("Unsupported Uri: " + uri);
 		}
-		
-		if(count>0) {
+
+		if (count > 0) {
 			getContext().getContentResolver().notifyChange(uri, null);
 		}
 
