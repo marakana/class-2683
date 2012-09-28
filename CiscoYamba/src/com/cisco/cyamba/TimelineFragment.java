@@ -3,8 +3,11 @@ package com.cisco.cyamba;
 import android.app.ListFragment;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.SimpleCursorAdapter;
+import android.widget.SimpleCursorAdapter.ViewBinder;
+import android.widget.TextView;
 
 public class TimelineFragment extends ListFragment {
 	private static final String[] FROM = { StatusContract.Columns.USER,
@@ -13,6 +16,21 @@ public class TimelineFragment extends ListFragment {
 			R.id.text_created_at };
 	private Cursor cursor;
 	private SimpleCursorAdapter adapter;
+
+	private static final ViewBinder VIEW_BINDER = new ViewBinder() {
+
+		public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+			if (view.getId() == R.id.text_created_at) {
+				long timestamp = cursor.getLong(columnIndex);
+				CharSequence relTime = DateUtils
+						.getRelativeTimeSpanString(timestamp);
+				((TextView)view).setText(relTime);
+				return true;
+			} else
+				return false;
+		}
+
+	};
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -24,6 +42,7 @@ public class TimelineFragment extends ListFragment {
 
 		adapter = new SimpleCursorAdapter(getActivity(), R.layout.row, cursor,
 				FROM, TO);
+		adapter.setViewBinder(VIEW_BINDER);
 
 		setListAdapter(adapter);
 	}
