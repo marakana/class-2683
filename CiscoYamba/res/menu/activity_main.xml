@@ -7,13 +7,23 @@
         android:title="@string/title_activity_status"
         android:titleCondensed="@string/status">
     </item>
-    
     <item
         android:id="@+id/item_refresh"
         android:icon="@android:drawable/ic_menu_rotate"
         android:showAsAction="always"
         android:title="@string/refresh">
-    </item><item android:id="@+id/item_prefs" android:icon="@android:drawable/ic_menu_preferences" android:showAsAction="ifRoom" android:title="@string/title_preferences" android:titleCondensed="@string/prefs">
+    </item>
+    <item
+        android:id="@+id/item_prefs"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:showAsAction="ifRoom"
+        android:title="@string/title_preferences"
+        android:titleCondensed="@string/prefs">
+    </item>
+    <item
+        android:id="@+id/item_purge"
+        android:title="@string/purge"
+        android:icon="@android:drawable/ic_menu_delete">
     </item>
 
 </menu>

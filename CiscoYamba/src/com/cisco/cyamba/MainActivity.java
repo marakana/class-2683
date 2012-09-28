@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	/** Handles all action bar actions. */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -44,7 +45,10 @@ public class MainActivity extends Activity {
 			swapFragment(prefsFragment);
 			return true;
 		case R.id.item_refresh:
-			startService( new Intent( REFRESH_ACTION ) );
+			startService(new Intent(REFRESH_ACTION));
+			return true;
+		case R.id.item_purge:
+			getContentResolver().delete(StatusContract.CONTENT_URI, null, null);
 			return true;
 		default:
 			return false;

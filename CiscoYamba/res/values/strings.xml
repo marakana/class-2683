@@ -19,5 +19,6 @@
     <string name="status">Status</string>
     <string name="prefs">Prefs</string>
     <string name="refresh">Refresh</string>
+    <string name="purge">Purge</string>
 
 </resources>

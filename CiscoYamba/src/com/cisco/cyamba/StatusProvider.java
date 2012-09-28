@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.text.TextUtils;
 
 public class StatusProvider extends ContentProvider {
 
@@ -80,7 +81,30 @@ public class StatusProvider extends ContentProvider {
 
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = 0;
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		switch (uriMatcher.match(uri)) {
+		case STATUS_DIR:
+			count = db.delete(DbHelper.TABLE, selection, selectionArgs);
+			break;
+		case STATUS_ITEM:
+			String id = uri.getLastPathSegment();
+			String whereClause = StatusContract.Columns._ID
+					+ "="
+					+ id
+					+ (!TextUtils.isEmpty(selection) ? " AND (" + selection
+							+ ')' : "");
+			count = db.delete(DbHelper.TABLE, whereClause, selectionArgs);
+			break;
+		default:
+			throw new IllegalArgumentException("Unsupported Uri: " + uri);
+		}
+		
+		if(count>0) {
+			getContext().getContentResolver().notifyChange(uri, null);
+		}
+
+		return count;
 	}
 }
