@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends Activity {
-	public static final String REFRESH_ACTION = "com.cisco.yamba.REFRESH";
 	private TimelineFragment timelineFragment;
 	private StatusFragment statusFragment;
 	private PrefsFragment prefsFragment;
@@ -24,6 +23,10 @@ public class MainActivity extends Activity {
 		prefsFragment = new PrefsFragment();
 
 		getActionBar().setHomeButtonEnabled(true);
+
+		if (savedInstanceState == null) {
+			swapFragment(timelineFragment);
+		}
 	}
 
 	@Override
@@ -46,7 +49,7 @@ public class MainActivity extends Activity {
 			swapFragment(prefsFragment);
 			return true;
 		case R.id.item_refresh:
-			startService(new Intent(REFRESH_ACTION));
+			startService(new Intent(RefreshService.REFRESH_ACTION));
 			return true;
 		case R.id.item_purge:
 			getContentResolver().delete(StatusContract.CONTENT_URI, null, null);

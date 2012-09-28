@@ -186,9 +186,11 @@ Create a custom view to represent a single row of data. Call it `raw.xml` and it
 DEMO: View Binder::
 Create a view binder to properly display the relative time.
 
-
 LECTURE: Loaders::
-How to implement a cursor loader
+How to implement a cursor loader.
+
+
+// lunch
 
 
 LECTURE: Broadcast Receiver::
@@ -197,6 +199,13 @@ Overview of broadcast receivers, when to use them, and common patterns.
 DEMO: Create a Broadcast Receiver
 Use a BOOT COMPLETED broadcast action to trigger a receiver that will setup an Alarm service with a pending intent to regularly start the refresh service.
 
+DEMO: Setup the Alarm::
+Add an alarm in refresh receiver to kick start the refresh service at refresh interval.
+
+
+
+HOMEWORK: Add Network Receiver::
+A receiver that turns on or off the refresh service alarm as network becomes available or unavailable.
 
 Parking Lot
 ---------

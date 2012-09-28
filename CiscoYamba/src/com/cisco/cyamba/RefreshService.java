@@ -14,6 +14,7 @@ import com.marakana.android.yamba.clientlib.YambaClient.Status;
 import com.marakana.android.yamba.clientlib.YambaClientException;
 
 public class RefreshService extends IntentService {
+	public static final String REFRESH_ACTION = "com.cisco.yamba.REFRESH";
 	private static final String TAG = "RefreshService";
 	private YambaClient yambaClient = null;
 
