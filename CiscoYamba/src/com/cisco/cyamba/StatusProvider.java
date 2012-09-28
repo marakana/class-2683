@@ -63,7 +63,7 @@ public class StatusProvider extends ContentProvider {
 
 		Cursor cursor = qb.query(db, projection, selection, selectionArgs,
 				null, null, sortOrder);
-		
+
 		// Register for changes to this cursor
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
 
@@ -95,8 +95,31 @@ public class StatusProvider extends ContentProvider {
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = 0;
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		switch (uriMatcher.match(uri)) {
+		case STATUS_DIR:
+			db.update(DbHelper.TABLE, values, selection, selectionArgs);
+			break;
+		case STATUS_ITEM:
+			String id = uri.getLastPathSegment();
+			String whereClause = StatusContract.Columns._ID
+					+ "="
+					+ id
+					+ (!TextUtils.isEmpty(selection) ? " AND (" + selection
+							+ ')' : "");
+			db.update(DbHelper.TABLE, values, whereClause, selectionArgs);
+			break;
+		default:
+			throw new IllegalArgumentException("Unsupported Uri: " + uri);
+		}
+
+		if (count > 0) {
+			getContext().getContentResolver().notifyChange(uri, null);
+		}
+
+		return count;
 	}
 
 	@Override
