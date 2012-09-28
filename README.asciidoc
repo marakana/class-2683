@@ -207,6 +207,9 @@ Add an alarm in refresh receiver to kick start the refresh service at refresh in
 HOMEWORK: Add Network Receiver::
 A receiver that turns on or off the refresh service alarm as network becomes available or unavailable.
 
+HOMEWORK: Use Shared Prefs for Refresh Interval::
+We currently have the interval hard coded. We should be using values from the shared preferences instead.
+
 Parking Lot
 ---------
 * NDK/JNI
