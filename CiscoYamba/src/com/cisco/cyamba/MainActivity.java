@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 	public static final String REFRESH_ACTION = "com.cisco.yamba.REFRESH";
+	private TimelineFragment timelineFragment;
 	private StatusFragment statusFragment;
 	private PrefsFragment prefsFragment;
 
@@ -18,6 +19,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		timelineFragment = new TimelineFragment();
 		statusFragment = new StatusFragment();
 		prefsFragment = new PrefsFragment();
 
@@ -35,8 +37,7 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			getFragmentManager().beginTransaction().remove(prefsFragment)
-					.remove(statusFragment).commit();
+			swapFragment(timelineFragment);
 			return true;
 		case R.id.item_status:
 			swapFragment(statusFragment);

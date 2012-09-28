@@ -171,14 +171,17 @@ Add support for querying the data.
 LAB: Implement update()::
 Provide the implementation for update() in status provider, similar to insert() and delete().
 
-LECTURE: Timeline Fragment::
+LAB: Create a Timeline Fragment::
+Add a shell for a new timeline fragment. It's be the main content of the main activity.
+
+LECTURE: Lists and Adapters::
 Overview of lists and adapters. Intro to List fragment.
 
 DEMO: Create TimelineFragment::
 Create a fragment that will display the list of statuses from the status provider.
 
 DEMO: View Binder::
-Create a
+Create a view binder to properly display the relative time.
 
 LAB: Create a Custom View::
 Create a custom raw view.
