@@ -49,6 +49,7 @@ public class StatusProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+		qb.setTables(DbHelper.TABLE);
 
 		switch (uriMatcher.match(uri)) {
 		case STATUS_DIR:

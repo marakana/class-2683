@@ -178,13 +178,13 @@ LECTURE: Lists and Adapters::
 Overview of lists and adapters. Intro to List fragment.
 
 DEMO: Create TimelineFragment::
-Create a fragment that will display the list of statuses from the status provider.
+Create a fragment that will display the list of statuses from the status provider. Use `SimpleCursorAdapter`.
+
+LAB: Create a Custom View::
+Create a custom view to represent a single row of data. Call it `raw.xml` and it should have `text_user`, `text_message`, and `text_created_at` as pieces of text.
 
 DEMO: View Binder::
 Create a view binder to properly display the relative time.
-
-LAB: Create a Custom View::
-Create a custom raw view.
 
 
 LECTURE: Loaders::
