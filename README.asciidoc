@@ -158,6 +158,10 @@ DEMO: SQL Databases::
 Implement DbHelper class
 
 DEMO: Implementing Status Provider's insert()::
+Implement the insert() method so it properly inserts the data into the timeline databases. 
+
+HOMEWORK: Add Purge Data button::
+Add a button to the action bar that will call status provider's delete() method, and will remove all the records in the database (won't drop the table).
 
 
 Day 5
